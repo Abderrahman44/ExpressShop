@@ -1,4 +1,4 @@
-package com.abdat.expressshop.domain.model.response
+package com.abdat.expressshop.main.domain.model.response
 
 class ProductListModel(
     val products: List<Product>,

@@ -1,6 +1,6 @@
-package com.abdat.expressshop.data.dto.response
+package com.abdat.expressshop.main.data.dto.response
 
-import com.abdat.expressshop.domain.model.response.CategoriesListModel
+import com.abdat.expressshop.main.domain.model.response.CategoriesListModel
 import kotlinx.serialization.Serializable
 
 

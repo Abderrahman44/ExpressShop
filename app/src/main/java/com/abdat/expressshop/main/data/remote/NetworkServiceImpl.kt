@@ -6,6 +6,7 @@ import com.abdat.expressshop.core.data.networking.safeCall
 import com.abdat.expressshop.core.domain.util.NetworkError
 import com.abdat.expressshop.core.domain.util.Result
 import com.abdat.expressshop.core.domain.util.map
+import com.abdat.expressshop.main.data.dto.response.CategoriesListResponse
 import com.abdat.expressshop.main.data.dto.response.ProductListResponse
 import com.abdat.expressshop.main.domain.model.response.CartModel
 import com.abdat.expressshop.main.domain.model.response.CategoriesListModel
@@ -17,18 +18,23 @@ import io.ktor.client.request.get
 import kotlinx.coroutines.runBlocking
 
 class NetworkServiceImpl(private val client: HttpClient) : NetworkService {
-    override suspend fun getProducts(category: Int?): Result<NetworkError, ProductListModel> {
+    override suspend fun getProducts(category: Int? ): Result<NetworkError, ProductListModel> {
         return safeCall<ProductListResponse> {
             client.get(
-                urlString = constructUrl("/products")
+                urlString = constructUrl("/products/category/$category")
             )
         }.map { response ->
             response.toProductList()
         }
-
     }
     override suspend fun getCategories(): Result<NetworkError, CategoriesListModel> {
-        TODO("Not yet implemented")
+       return safeCall<CategoriesListResponse> {
+              client.get(
+                urlString = constructUrl("/categories")
+              )
+         }.map { response ->
+              response.toCategoriesList()
+       }
     }
 
     override suspend fun getCart(): Result<NetworkError, CartModel> {
@@ -42,11 +48,13 @@ fun main() = runBlocking {
     // create a new instance of NetworkServiceImpl
     val networkService = NetworkServiceImpl(HttpClientFactory.create(CIO.create()))
     // call the getProducts function
-    val products  = networkService.getProducts(1)
+    val products  = networkService.getCategories()
     // print the result
     when (products) {
         is Result.Success -> {
-            println(products.data.products)
+            products.data.categories.forEach {
+                println(it.title)
+            }
         }
         is Result.Error -> {
             println("Error: ${products.error}")

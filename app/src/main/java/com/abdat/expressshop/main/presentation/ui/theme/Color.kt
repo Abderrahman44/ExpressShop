@@ -1,4 +1,4 @@
-package com.abdat.expressshop.ui.theme
+package com.abdat.expressshop.main.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

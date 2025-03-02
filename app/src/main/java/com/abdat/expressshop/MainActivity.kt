@@ -7,41 +7,37 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.abdat.expressshop.ui.theme.ExpressShopTheme
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.abdat.expressshop.main.presentation.ui.feature.home.HomeScreen
+import com.abdat.expressshop.main.presentation.ui.feature.home.HomeVM
+import com.abdat.expressshop.main.presentation.ui.theme.ExpressShopTheme
+import org.koin.androidx.compose.koinViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val vm : HomeVM = koinViewModel()
             ExpressShopTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    val state = vm.uiState.collectAsStateWithLifecycle()
+                    HomeScreen(state = state.value, modifier = Modifier.padding(innerPadding))
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     ExpressShopTheme {
-        Greeting("Android")
+
     }
 }

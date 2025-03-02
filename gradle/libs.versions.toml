@@ -1,22 +1,23 @@
 [versions]
-agp = "8.8.1"
+agp = "8.8.2"
 kotlin = "2.1.10"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.7"
-activityCompose = "1.10.0"
+activityCompose = "1.10.1"
 composeBom = "2025.02.00"
 kotlinxCoroutinesSlf4j = "1.10.1"
 kotlinxCoroutinesTest = "1.10.1"
-desugar-jdk-libs = "2.1.4"
+desugar-jdk-libs = "2.1.5"
 ktor = "3.0.3"
 koin = "4.0.2"
 material3-adaptive = "1.0.0"
 compose-material-icons-extended = "1.7.8"
 mockkVersion = "1.12.0"
 slf4jSimple = "2.0.9"
+coilComposeVersion = "2.4.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -51,6 +52,7 @@ androidx-compose-material3-adaptive-navigation = { module = "androidx.compose.ma
 compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "compose-material-icons-extended" }
 mockk-mockk = { module = "io.mockk:mockk", version.ref = "mockkVersion" }
 slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4jSimple" }
+coil-kt-coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilComposeVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -68,7 +70,8 @@ compose = [
     "androidx-ui-graphics",
     "androidx-ui-tooling-preview",
     "androidx-compose-material3-adaptive-navigation",
-    "compose-material-icons-extended"
+    "compose-material-icons-extended",
+    "coil-kt-coil-compose",
 ]
 compose-debug = [
     "androidx-ui-tooling",

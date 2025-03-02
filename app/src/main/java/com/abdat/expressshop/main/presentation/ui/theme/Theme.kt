@@ -1,6 +1,5 @@
-package com.abdat.expressshop.ui.theme
+package com.abdat.expressshop.main.presentation.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

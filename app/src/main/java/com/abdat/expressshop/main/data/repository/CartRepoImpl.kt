@@ -9,7 +9,4 @@ import com.abdat.expressshop.main.domain.repository.CartRepo
 
 class CartRepoImpl(val networkService: NetworkService): CartRepo {
     override suspend fun getCart(): Result<NetworkError,CartModel> =  networkService.getCart()
-
-
-
 }

@@ -72,6 +72,8 @@ dependencies {
     implementation(libs.bundles.koin)
     implementation(libs.bundles.ktor)
 
+
+
     implementation(libs.kotlinx.coroutines.slf4j)
     implementation(libs.slf4j.simple)
 
